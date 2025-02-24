@@ -1,0 +1,9 @@
+<p>Jelenlegi időzóna:</p>
+<input type="text" [(ngModel)]="tzName" />
+<p>{{ time() | date : "shortTime" }}</p>
+<button (click)="updateTime()">frissítés</button>
+@if(!isCurrent()){
+<button [disabled]="isCurrent()" (click)="timezoneChanged.emit(timezone())">
+  Jelenleginek jelöl
+</button>
+}

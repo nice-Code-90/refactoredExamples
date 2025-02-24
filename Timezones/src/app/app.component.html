@@ -1,0 +1,21 @@
+@for(timezone of displayTimezones(); track timezone){
+
+<app-timezone
+  [timezone]="timezone"
+  [isCurrent]="timezone === selectedTimezone()"
+  (timezoneChanged)="handleTimezoneChange($event)"
+/>
+
+} @if(displayTimezones().length < 5){
+<div>
+  <button class="newTimezone" (click)="addNewTimezone()">
+    Új időzóna hozzáadása
+  </button>
+</div>
+}
+
+<!-- <app-timezone
+  [timezone]="'America/New_York'"
+  [isCurrent]="'America/New_York' === selectedTimezone()"
+  (timezoneChanged)="handleTimezoneChange($event)"
+/> -->

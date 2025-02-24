@@ -1,0 +1,10 @@
+:host {
+  border: 1px solid gray;
+  display: block;
+  margin-bottom: 16px;
+  padding: 8px;
+
+  &.current {
+    background-color: turquoise;
+  }
+}
