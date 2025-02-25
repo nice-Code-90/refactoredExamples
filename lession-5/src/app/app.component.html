@@ -1,0 +1,13 @@
+<div>
+  <!-- <p>
+    {{ text() | myUppercase }}
+  </p> -->
+
+  @for(fruit of fruits(); track fruit.name){
+  <p>
+    {{
+      fruit | displayFruit : hatedFruits().includes(fruit.name) | myUppercase
+    }}
+  </p>
+  }
+</div>
