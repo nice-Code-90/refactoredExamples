@@ -1,0 +1,8 @@
+<app-result-table [results]="results()" [(selectedRow)]="selectedRow" />
+
+@if(selectedRow() !== undefined) {
+<app-podium
+  [podium]="results()[selectedRow()!].podium"
+  (hideEvent)="selectedRow.set(undefined)"
+/>
+}

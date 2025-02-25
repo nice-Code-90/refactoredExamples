@@ -1,0 +1,8 @@
+@for( position of podium(); track position ){
+<p>
+  {{ $index + 1 }}
+  {{ position }}
+</p>
+}
+
+<button (click)="hideEvent.emit()">Hide podium</button>

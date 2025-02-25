@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    @for(column of columns; track column.key) {
+    <th>{{ column.label }}</th>
+    }
+  </tr>
+  @for(result of results(); track result.grandPrix) {
+  <tr
+    (click)="selectedRow.set($index)"
+    [class.selected]="selectedRow() === $index"
+    [ngClass]="{ even: $even }"
+  >
+    @for(column of columns; track column.key) {
+    <td>
+      {{
+        column.key === "team"
+          ? result[column.key].toUpperCase()
+          : column.key === "date"
+          ? (result[column.key] | date : "shortDate")
+          : result[column.key]
+      }}
+    </td>
+    }
+  </tr>
+  }
+</table>
