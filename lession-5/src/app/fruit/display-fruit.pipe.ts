@@ -3,6 +3,7 @@ import { Fruit } from './fruit.model';
 
 @Pipe({
   name: 'displayFruit',
+  pure: true,
 })
 export class DisplayFruitPipe implements PipeTransform {
   transform(fruit: Fruit, isHated = false): string {
