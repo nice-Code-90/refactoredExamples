@@ -1,4 +1,4 @@
-import { Directive, effect, input } from '@angular/core';
+import { Directive, effect, ElementRef, inject, input } from '@angular/core';
 import { Fruit } from './fruit.model';
 
 @Directive({
@@ -6,11 +6,16 @@ import { Fruit } from './fruit.model';
 })
 export class FruitDirective {
   fruit = input<Fruit>(undefined, { alias: 'appFruit' });
+  private readonly element: ElementRef<HTMLElement> = inject(ElementRef);
 
   constructor() {
     effect(() => {
       const currentFruit = this.fruit();
-      console.log('Fruit:', currentFruit);
+
+      this.element.nativeElement.style.backgroundColor = currentFruit!.color;
+      this.element.nativeElement.style.padding = '4px 8px';
+      this.element.nativeElement.style.borderRadius = '4px';
+      this.element.nativeElement.style.textAlign = 'center';
     });
   }
 }
