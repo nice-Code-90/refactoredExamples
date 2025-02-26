@@ -1,4 +1,4 @@
-import { Directive, input } from '@angular/core';
+import { Directive, effect, input } from '@angular/core';
 import { Fruit } from './fruit.model';
 
 @Directive({
@@ -7,5 +7,10 @@ import { Fruit } from './fruit.model';
 export class FruitDirective {
   fruit = input<Fruit>(undefined, { alias: 'appFruit' });
 
-  constructor() {}
+  constructor() {
+    effect(() => {
+      const currentFruit = this.fruit();
+      console.log('Fruit:', currentFruit);
+    });
+  }
 }
